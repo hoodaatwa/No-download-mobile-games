@@ -181,6 +181,7 @@
         instructionsElement.textContent = "Instructions: " + game.Instructions;
         linkElement.href = game.Url;
         linkElement.textContent = 'Play Now'; // You can customize the link text
+        linkElement.target = '_blank'; // Open link in a new tab
 
         // Append elements to the game container
         gameContainer.appendChild(titleElement);
