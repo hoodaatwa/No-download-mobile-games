@@ -11,25 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500&family=Rubik+Broken+Fax&family=Rubik+Doodle+Triangles&display=swap" rel="stylesheet">
     
-    <meta name="description" content="Explore a collection of online games with detailed information. Play now and enjoy the gaming experience.">
-    <meta name="keywords" content="online games, game catalog, play games, gaming experience, game information">
-    <meta name="author" content="hoodaatwa">
-
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Game Information">
-    <meta property="og:description" content="Explore a collection of online games with detailed information. Play now and enjoy the gaming experience.">
-    <meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiTdJ0N78LkeJdtsw70QCLrbfmS43KuDhW4Q&usqp=CAU">
-    <meta property="og:url" content="https://43araby.blogspot.com/">
-    <meta property="og:type" content="website">
-
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Game Information">
-    <meta name="twitter:description" content="Explore a collection of online games with detailed information. Play now and enjoy the gaming experience.">
-    <meta name="twitter:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiTdJ0N78LkeJdtsw70QCLrbfmS43KuDhW4Q&usqp=CAU">
-
-    <!-- Favicon -->
-    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiTdJ0N78LkeJdtsw70QCLrbfmS43KuDhW4Q&usqp=CAU" type="image/png">
+    
 
     <!-- Material-UI styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
@@ -40,7 +22,7 @@
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0px;
             background-color: #446FAA1A;
         }
 
@@ -116,9 +98,28 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+h1 {
+            background-color: #333;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #searchInput {
+            margin-bottom: 20px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
+<!-- Title -->
+<h1>No Download Mobile Games</h1>
+
+<!-- Search Input -->
+<input type="text" id="searchInput" placeholder="Search games by name" oninput="filterGames()">
 
 <!-- Loading container with CircularProgress -->
 <div id="loadingContainer">
@@ -190,6 +191,20 @@
 
         // Append game container to the main container
         container.appendChild(gameContainer);
+    }
+
+function filterGames() {
+        const searchInput = document.getElementById('searchInput').value.toLowerCase();
+        const gameContainers = document.querySelectorAll('.gameContainer');
+
+        gameContainers.forEach((gameContainer) => {
+            const title = gameContainer.querySelector('h2').textContent.toLowerCase();
+            if (title.includes(searchInput)) {
+                gameContainer.style.display = 'block';
+            } else {
+                gameContainer.style.display = 'none';
+            }
+        });
     }
 
     // Fetch game data and display it
